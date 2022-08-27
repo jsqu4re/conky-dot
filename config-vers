@@ -1,0 +1,41 @@
+# conky config battery indicator
+alignment bottom_middle
+background no
+border_width 1
+cpu_avg_samples 2
+default_color d8dee9
+default_outline_color d8dee9
+default_shade_color 4c566a
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont RobotoMono Nerd Font Mono:size=17
+gap_x 0
+gap_y -50
+minimum_size 500 500
+net_avg_samples 1
+double_buffer yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_class Conky
+own_window_type override
+own_window_transparent yes
+stippled_borders 0
+update_interval 3.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+# stuff after 'TEXT' will be formatted on screen
+# maximum_width 2500
+
+TEXT
+${font RobotoMono Nerd Font Mono:size=20}${execi 7200 curl -s "https://www.biblegateway.com/votd/get/?format=html&version=NIV" > /tmp/verse && html2 < /tmp/verse | head -n 1 | sed 's/\/html\/body\/div= “//' | sed 's/” (//'}${font RobotoMono Nerd Font Mono:size=11}
+
+$alignr- ${execi 7200 curl -s "https://www.biblegateway.com/votd/get/?format=html&version=NIV" > /tmp/verse && html2 < /tmp/verse | head -n 4 | tail -n 1 | sed 's/\/html\/body\/div\/a=//'}
+

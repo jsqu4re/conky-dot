@@ -1,0 +1,84 @@
+# conky config battery indicator
+alignment middle_left
+background no
+border_width 1
+cpu_avg_samples 2
+default_color d8dee9
+default_outline_color d8dee9
+default_shade_color 4c566a
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont RobotoMono Nerd Font Mono:size=11
+gap_x 350
+gap_y -50
+minimum_size 500 500
+net_avg_samples 1
+double_buffer yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_class Conky
+own_window_type override
+own_window_transparent yes
+stippled_borders 0
+update_interval 3.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+
+TEXT
+# ${battery BAT1} ${battery_bar BAT1} ${battery_short BAT1}
+# ${time %A %d %B %Y}                                         ${time %H:%M:%S}
+# $stippled_hr
+${font RobotoMono Nerd Font Mono:size=20}Welcome, ${user_names}!
+${font RobotoMono Nerd Font Mono:size=11}
+${cpugraph eceff4 e5e9f0}
+${color #e5e9f0}${cpubar}
+${color #eceff4}CPU$alignr$color $cpu%
+
+  ${top name 1}$alignr${top cpu 1}
+  ${top name 2}$alignr${top cpu 2}
+  ${top name 3}$alignr${top cpu 3}
+  ${top name 4}$alignr${top cpu 4}
+  ${top name 5}$alignr${top cpu 5}
+
+${memgraph eceff4 e5e9f0}
+${color #e5e9f0}${membar}
+${color #eceff4}RAM$alignr$color$mem/$memmax - $memperc%
+
+  ${top_mem name 1}$alignr${top_mem mem 1}
+  ${top_mem name 2}$alignr${top_mem mem 2}
+  ${top_mem name 3}$alignr${top_mem mem 3}
+  ${top_mem name 4}$alignr${top_mem mem 4}
+  ${top_mem name 5}$alignr${top_mem mem 5}
+
+${color #e5e9f0}${swapbar}
+${color #eceff4}Swap$alignr$color$swap/$swapmax - $swapperc%
+
+${color #eceff4}Process$alignr$color $processes ($running_processes)
+# $color$stippled_hr
+
+${color #eceff4}IP$alignr${addr enp2s0}${color #eceff4}
+# /home/jsqu4re/.config/conky/publicip.sh
+$alignr${execi 7200 wget http://v4.ipv6-test.com/api/myip.php -q -O -}
+
+# ${color #eceff4}          ${execi 7200 ~/.config/conky/publicip.sh} ${color #eceff4}
+# Global: $color${execi 7200 ~/.conky/publicip.sh}
+# ${color #d8dee9}${downspeedgraph enp2s0 32,150 8b4b0b ffc11f}
+${color #d8dee9}${downspeedgraph enp2s0 eceff4 e5e9f0}
+${color #eceff4}Download$alignr$color ${downspeed enp2s0}
+# ${color #d8dee9}${upspeedgraph enp2s0 32,150 ffc11f 8b4b0b}
+${color #d8dee9}${upspeedgraph enp2s0 eceff4 e5e9f0}
+${color #eceff4}Upload$alignr$color ${upspeed enp2s0}
+# $color$stippled_hr
+
+${color #e5e9f0}${fs_bar /}
+${color #eceff4}HDD$alignr${color #d8dee9}${fs_free /}/${fs_size /}
+
+$nodename - $sysname $kernel on $machine
