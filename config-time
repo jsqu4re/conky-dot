@@ -25,7 +25,7 @@ own_window_class Conky
 own_window_type override
 own_window_transparent yes
 stippled_borders 0
-update_interval 10.0
+update_interval 3.0
 uppercase no
 use_spacer none
 show_graph_scale no

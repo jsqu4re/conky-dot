@@ -31,11 +31,9 @@ use_spacer none
 show_graph_scale no
 show_graph_range no
 
-# stuff after 'TEXT' will be formatted on screen
-# maximum_width 2500
 
 TEXT
-${font RobotoMono Nerd Font Mono:size=20}${execi 7200 curl -s "https://www.biblegateway.com/votd/get/?format=html&version=NIV" > /tmp/verse && html2 < /tmp/verse | head -n 1 | sed 's/\/html\/body\/div= “//' | sed 's/” (//'}${font RobotoMono Nerd Font Mono:size=11}
+${font RobotoMono Nerd Font Mono:size=18}${execi 7200 curl -s "https://www.biblegateway.com/votd/get/?format=html&version=NGU-DE" > /tmp/verse && html2 < /tmp/verse | head -n 1 | sed 's/\/html\/body\/div= “//' | sed 's/” (//'}${font RobotoMono Nerd Font Mono:size=11}
 
-$alignr- ${execi 7200 curl -s "https://www.biblegateway.com/votd/get/?format=html&version=NIV" > /tmp/verse && html2 < /tmp/verse | head -n 4 | tail -n 1 | sed 's/\/html\/body\/div\/a=//'}
+$alignr- ${execi 7200 curl -s "https://www.biblegateway.com/votd/get/?format=html&version=NGU-DE" > /tmp/verse && html2 < /tmp/verse | head -n 4 | tail -n 1 | sed 's/\/html\/body\/div\/a=//'}
 
